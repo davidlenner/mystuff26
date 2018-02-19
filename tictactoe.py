@@ -1,4 +1,3 @@
-table = [7, 8, 9, 4, 5, 6, 1, 2, 3]
 
 
 def board():
@@ -8,7 +7,7 @@ def board():
             print()
 
 
-def p1shot:
+def p1shot():
     k = int(input("number:"))
     num = table.index(k)
     if k in range(len(table)):
@@ -17,7 +16,7 @@ def p1shot:
     board()
 
 
-def p2shot:
+def p2shot():
     m = int(input("number:"))
     num1 = table.index(m)
     if m in range(len(table)):
@@ -26,6 +25,9 @@ def p2shot:
     board()
 
 
-def win():
-    if table[0] == x
+
+
+table = [" ", " ", " ", " ", " ", " ", " ", " ", " "]
+
     
+ 
