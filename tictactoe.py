@@ -27,4 +27,5 @@ def p2shot:
 
 
 def win():
+    if table[0] == x
     
