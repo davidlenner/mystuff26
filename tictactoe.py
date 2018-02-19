@@ -26,4 +26,5 @@ def p2shot:
     board()
 
 
-
+def win():
+    
