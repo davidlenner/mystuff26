@@ -1,11 +1,19 @@
 import sys
 
+tablesize = int(input("choose a board size(3 or 5):"))
+
 
 def board():
-    for i in range(len(table)):
-        print("|", table[i], "|", end="")
-        if i % 3 == 2:
-            print()
+    if tablesize == 3:
+        for i in range(len(table)):
+            print("|", table[i], "|", end="")
+            if i % 3 == 2:
+                print()
+    if tablesize == 5:
+        for i in range(len(table)):
+            print("|","%2i" % table[i], "|", end="")
+            if (i+1) % 5 == 0:
+                print()
 
 
 def p1shot():
@@ -30,21 +38,26 @@ def p2shot():
     board()
 
 
-table = [] 
-while len(table) != 9:
-    for i in range(7-(len(table)),10-(len(table))):
-        table.append(i)
-print(table)
+def boardsize():
+    if tablesize == 3:
+        while len(table) != tablesize*tablesize:
+            for i in range(7-(len(table)),10-(len(table))):
+                table.append(i)
+    if tablesize == 5:
+        while len(table) != tablesize*tablesize:
+            for i in range(21-(len(table)), 26-(len(table))):
+                table.append(i)
+        
 
-
-table = []       
+table = []
+boardsize()
 board()
 while True:
     try:
         p1shot()
-    except(IndexError,):
+    except(IndexError, ValueError):
         pass
     try:
         p2shot()
-    except(IndexError,):
+    except(IndexError, ValueError):
         pass
