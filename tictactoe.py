@@ -11,7 +11,7 @@ def board():
                 print()
     if tablesize == 5:
         for i in range(len(table)):
-            print("|","%2i" % table[i], "|", end="")
+            print("|","%2s" % table[i], "|", end="")
             if (i+1) % 5 == 0:
                 print()
 
