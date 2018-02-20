@@ -20,6 +20,7 @@ def p1shot():
             print("win")
             exit()
 
+
 def p2shot():
     m = int(input("number:"))
     num1 = table.index(m)
@@ -28,12 +29,12 @@ def p2shot():
         table.remove(m)
     board()
 
+
 table = [] 
 while len(table) != 9:
     for i in range(7-(len(table)),10-(len(table))):
         table.append(i)
 print(table)
-
 
 
 table = []       
