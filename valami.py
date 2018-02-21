@@ -1,4 +1,7 @@
 tablesize = int(input("gfdg:"))
+while tablesize >10:
+    tablesize = int(input("gfdg:"))
+
 my_list = []
 g = []
 
