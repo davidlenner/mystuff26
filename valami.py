@@ -20,7 +20,7 @@ def board():
     for y in range(0, len(my_list)):
         sor_string = " "
         for x in range(0, len(my_list[y])):
-            sor_string += str(my_list[y][x]) + " "
+            sor_string += str("%3s" % my_list[y][x]) + " "
         print(sor_string)
  
 
