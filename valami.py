@@ -20,25 +20,26 @@ def board():
 
 
 def investigate():
-    for x in range(0,tablesize):
-        for y in range(0, len(my_list[x])):
+    for y in range(0,tablesize):
+        for x in range(0, len(my_list[y])):
             try:    
                 ertek = my_list[y][x] #a fenti listán belüli második(y = 1) my_list második(x = 1) elemének az értéke(5)
-                print("Jelenlegi pozíció értéke:", ertek)
-
                 bal_szomszed = my_list[y][x - 1] #az x és y koordináta bal oldali szomszédjának az értéke(4)
-                print("Bal szomszéd értéke:", bal_szomszed)
-
                 jobb_szomszed = my_list[y][x + 1] #az x és y koordináta jobb oldali szomszédjának az értéke(6)
-                print("Jobb oldali szomszéd:", jobb_szomszed)
-
                 felso_szomszed = my_list[y - 1][x] #az x és y koordináta felső szomszédjának az értéke(2)
-                print("Felső szomszéd:", felso_szomszed)
-
                 also_szomszed = my_list[y + 1][x] #az x és y koordináta alsó szomszédjának az értéke(8)
-                print("Alsó szomszéd:", also_szomszed)
-
                 bal_felso_szomszed = my_list[y - 1][x - 1] #az x és y koordináta bal felső szomszédjának az értéke(1)
+                jobb_also_szomszed = my_list[y + 1][x + 1]
+                jobb_felso_szomszed = my_list[y - 1][x + 1]
+                bal_also_szomszed = my_list[y + 1][x - 1]
+                if (ertek == bal_szomszed and ertek == jobb_szomszed):
+                    print("-----------------------------------------------------------------------")
+                if (ertek == also_szomszed and ertek == felso_szomszed):
+                    print("6666666666666666666666666666666666666666666666666")
+                if (ertek == bal_felso_szomszed and ertek == jobb_also_szomszed):
+                    print("ddddddddddddddddddddddddddddddddddddddddddddddddddddd")
+                if (ertek == bal_also_szomszed and ertek == jobb_felso_szomszed):
+                    print("000000000000000000000000000000000000000000000000000000000000000")
             except(IndexError):
                 pass
 
@@ -72,12 +73,9 @@ boardsize()
 board()
 
 while True:
-    try:
         p1shot()
-    except(IndexError, ValueError):
-        pass
-    try:
+        investigate()
         p2shot()
-    except(IndexError, ValueError):
-        pass
+        investigate()
         
+    
