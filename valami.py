@@ -29,13 +29,13 @@ def investigate():
                 felso_szomszed = my_list[y - 1][x] #az x és y koordináta felső szomszédjának az értéke(2)
                 also_szomszed = my_list[y + 1][x] #az x és y koordináta alsó szomszédjának az értéke(8)
                 bal_felso_szomszed = my_list[y - 1][x - 1] #az x és y koordináta bal felső szomszédjának az értéke(1)
-                if ertek == "x" and bal_szomszed == "x" and jobb_szomszed == "x":
+                if ertek == bal_szomszed == jobb_szomszed:
                     print("WIN")
                     exit()
                 if ertek == "x" and felso_szomszed == "x" and also_szomszed == "x":
                     print("WIN")
                     exit()
-                
+                if ertek == "x" and bal_felso_szomszed == "x" and 
                 except(IndexError):
                     pass
 
@@ -80,4 +80,5 @@ while True:
         investigate()
     except(IndexError, ValueError):
         pass
+        
         
