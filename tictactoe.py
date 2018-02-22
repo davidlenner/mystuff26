@@ -1,5 +1,3 @@
-import sys
-
 tablesize = int(input("choose a board size(3 or 5):"))
 
 
