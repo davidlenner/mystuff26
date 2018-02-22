@@ -19,60 +19,6 @@ def board():
         print(sor_string)
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 def investigate():
     for x in range(0,tablesize):
         for y in range(0, len(my_list[x])):
@@ -97,10 +43,41 @@ def investigate():
                 pass
 
 
+def p1shot():
+    k = int(input("number1:"))
+    for r in range(0, len(my_list)):
+        for z in range(0, len(my_list[r])):
+            if k in my_list[r]:
+                num = my_list[r].index(k)
+                my_list[r].insert(num,"x")
+                my_list[r].remove(k)
+    board()
+
+
+def p2shot():
+    k = int(input("number2:"))
+    for r in range(0, len(my_list)):
+        for z in range(0, len(my_list[r])):
+            if k in my_list[r]:
+                num = my_list[r].index(k)
+                my_list[r].insert(num,"o")
+                my_list[r].remove(k)
+    board()
+
 
 tablesize = int(input("choose your gamearea size:"))
 my_list = []
 g = []
 boardsize()
 board()
-shoot()
+
+while True:
+    try:
+        p1shot()
+    except(IndexError, ValueError):
+        pass
+    try:
+        p2shot()
+    except(IndexError, ValueError):
+        pass
+        
