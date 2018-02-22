@@ -20,65 +20,85 @@ def board():
 
 
 def investigate():
-    for y in range(0,tablesize):
-        for x in range(0, len(my_list[y])):
-            try:    
-                ertek = my_list[y][x] #a fenti listán belüli második(y = 1) my_list második(x = 1) elemének az értéke(5)
-                bal_szomszed = my_list[y][x - 1] #az x és y koordináta bal oldali szomszédjának az értéke(4)
-                jobb_szomszed = my_list[y][x + 1] #az x és y koordináta jobb oldali szomszédjának az értéke(6)
-                felso_szomszed = my_list[y - 1][x] #az x és y koordináta felső szomszédjának az értéke(2)
-                also_szomszed = my_list[y + 1][x] #az x és y koordináta alsó szomszédjának az értéke(8)
-                bal_felso_szomszed = my_list[y - 1][x - 1] #az x és y koordináta bal felső szomszédjának az értéke(1)
+    for y in range(0, tablesize):
+        for x in range(0, (tablesize+1)):
+            try:
+                ertek = my_list[y][x]
+                bal_szomszed = my_list[y][x - 1]
+                jobb_szomszed = my_list[y][x + 1]
+                felso_szomszed = my_list[y - 1][x]
+                also_szomszed = my_list[y + 1][x]
+                bal_felso_szomszed = my_list[y - 1][x - 1]
                 jobb_also_szomszed = my_list[y + 1][x + 1]
                 jobb_felso_szomszed = my_list[y - 1][x + 1]
                 bal_also_szomszed = my_list[y + 1][x - 1]
                 if (ertek == bal_szomszed and ertek == jobb_szomszed):
-                    print("-----------------------------------------------------------------------")
+                    print(ertek + " win")
+                    exit()
                 if (ertek == also_szomszed and ertek == felso_szomszed):
-                    print("6666666666666666666666666666666666666666666666666")
+                    print(ertek + " win")
+                    exit()
                 if (ertek == bal_felso_szomszed and ertek == jobb_also_szomszed):
-                    print("ddddddddddddddddddddddddddddddddddddddddddddddddddddd")
+                    print(ertek + " win")
+                    exit()
                 if (ertek == bal_also_szomszed and ertek == jobb_felso_szomszed):
-                    print("000000000000000000000000000000000000000000000000000000000000000")
+                    print(ertek + " win")
+                    exit()
             except(IndexError):
-                pass
+                continue
 
 
 def p1shot():
-    k = int(input("number1:"))
+    k = int(input("%s write a number:" % name1))
+    while k in shots or k > tablesize*tablesize:
+        k = int(input("%s write a number:" % name1))
+    shots.append(k)
     for r in range(0, len(my_list)):
         for z in range(0, len(my_list[r])):
             if k in my_list[r]:
                 num = my_list[r].index(k)
-                my_list[r].insert(num,"x")
+                my_list[r].insert(num, "x")
                 my_list[r].remove(k)
     board()
 
 
 def p2shot():
-    k = int(input("number2:"))
+    k = int(input("%s write a number:" % name2))
+    while k in shots or k > tablesize*tablesize:
+        k = int(input("%s write a number:" % name2))
+    shots.append(k)
     for r in range(0, len(my_list)):
         for z in range(0, len(my_list[r])):
             if k in my_list[r]:
                 num = my_list[r].index(k)
-                my_list[r].insert(num,"o")
+                my_list[r].insert(num, "o")
                 my_list[r].remove(k)
     board()
 
 
-
 def main():
-    while True:
+    stage = 0
+    while stage < tablesize*tablesize:
         p1shot()
+        stage += 1
+        if stage == tablesize*tablesize:
+            print("TIE!!")
+            break
         investigate()
         p2shot()
+        stage += 1
         investigate()
 
-tablesize = int(input("choose your gamearea size:"))
+
+name1 = input("Player 1 what's your name?")
+name2 = input("Player 2 what's your name?")
+tablesize = int(input("Choose your gamearea size:"))
+while tablesize > 10 or tablesize < 3:
+    tablesize = int(input("Choose your gamearea size:"))
 my_list = []
 g = []
+shots = []
 boardsize()
 board()
-
 
 main()
