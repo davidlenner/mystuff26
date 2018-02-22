@@ -66,16 +66,19 @@ def p2shot():
     board()
 
 
+
+def main():
+    while True:
+        p1shot()
+        investigate()
+        p2shot()
+        investigate()
+
 tablesize = int(input("choose your gamearea size:"))
 my_list = []
 g = []
 boardsize()
 board()
 
-while True:
-        p1shot()
-        investigate()
-        p2shot()
-        investigate()
-        
-    
+
+main()
