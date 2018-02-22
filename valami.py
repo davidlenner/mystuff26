@@ -20,27 +20,24 @@ def board():
 
 
 def investigate():
-    for x in range(0,tablesize):
-        for y in range(0, len(my_list[x])):
-            try:    
+    for y in range(0, tablesize):
+        for x in range(0, len(my_list[y])):
+            try:
                 ertek = my_list[y][x] #a fenti listán belüli második(y = 1) my_list második(x = 1) elemének az értéke(5)
-                print("Jelenlegi pozíció értéke:", ertek)
-
                 bal_szomszed = my_list[y][x - 1] #az x és y koordináta bal oldali szomszédjának az értéke(4)
-                print("Bal szomszéd értéke:", bal_szomszed)
-
                 jobb_szomszed = my_list[y][x + 1] #az x és y koordináta jobb oldali szomszédjának az értéke(6)
-                print("Jobb oldali szomszéd:", jobb_szomszed)
-
                 felso_szomszed = my_list[y - 1][x] #az x és y koordináta felső szomszédjának az értéke(2)
-                print("Felső szomszéd:", felso_szomszed)
-
                 also_szomszed = my_list[y + 1][x] #az x és y koordináta alsó szomszédjának az értéke(8)
-                print("Alsó szomszéd:", also_szomszed)
-
                 bal_felso_szomszed = my_list[y - 1][x - 1] #az x és y koordináta bal felső szomszédjának az értéke(1)
-            except(IndexError):
-                pass
+                if ertek == "x" and bal_szomszed == "x" and jobb_szomszed == "x":
+                    print("WIN")
+                    exit()
+                if ertek == "x" and felso_szomszed == "x" and also_szomszed == "x":
+                    print("WIN")
+                    exit()
+                
+                except(IndexError):
+                    pass
 
 
 def p1shot():
@@ -71,13 +68,16 @@ g = []
 boardsize()
 board()
 
+
 while True:
     try:
         p1shot()
+        investigate()
     except(IndexError, ValueError):
         pass
     try:
         p2shot()
+        investigate()
     except(IndexError, ValueError):
         pass
         
